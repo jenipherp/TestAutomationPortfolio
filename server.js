@@ -5,6 +5,7 @@ import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
+const PORT = process.env.PORT || 10000;
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 
@@ -41,4 +42,4 @@ app.post("/trigger", async (req, res) => {
     }
 });
 
-app.listen(10000, () => console.log("Dashboard running on port 10000"));
+app.listen(PORT, () => console.log("Dashboard running on port 10000"));
