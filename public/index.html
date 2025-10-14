@@ -22,13 +22,13 @@
     <h1>Trigger Dashboard</h1>
     <form id="testform">
         <label>Browser:</label><br>
-        <select name="Browser">
+        <select name="browser">
             <option value="Chrome">Chrome</option>
             <option value="FireFox">FireFox</option>
             <option value="Edge">Edge</option>
         </select><br>
         <label>Profiles:</label><br>
-        <select name="Profile">
+        <select name="profile">
             <option value="smoke">Smoke</option>
             <option value="regression">Regression</option>
         </select><br>
@@ -42,7 +42,7 @@
             const data = new FormData(e.target);
             const res = await fetch("/trigger", {
                 method: "POST",
-                headers: { "Content-Type": "x-www-form-urlencoded" },
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
                 body: new URLSearchParams(data).toString()
             });
             const text = await res.text();

@@ -1,4 +1,3 @@
-import { profile } from "console";
 import express, { response } from "express";
 import fetch from "node-fetch";
 import path from "path";
@@ -16,7 +15,7 @@ const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 
 app.post("/trigger", async (req, res) => {
     const { browser, profile } = req.body;
-    const apiUrl = https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/actions/workflows/${WORKFLOW_FILE}/dispatches;
+    const apiUrl = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/actions/workflows/${WORKFLOW_FILE}/dispatches`;
 
     try {
         const response = await fetch(apiUrl, {
