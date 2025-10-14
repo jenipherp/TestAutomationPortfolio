@@ -36,6 +36,19 @@
     </form>
 
     <div id="output" style="margin-top:20px;color:darkblue"></div>
+    <script>
+        document.getElementById("testform").onsubmit = async (e) => {
+            e.preventDefault();
+            const data = new FormData(e.target);
+            const res = await fetch("/trigger", {
+                method: "POST",
+                headers: { "Content-Type": "x-www-form-urlencoded" },
+                body: new URLSearchParams(data).toString()
+            });
+            const text = await res.text();
+            document.getElementById("output").innerHTML = text;
+        };
+    </script>
 </body>
 <footer>
     Created by Jenipher Nancy inspired to contribute for safer and reliable software.
