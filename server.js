@@ -14,6 +14,11 @@ const GITHUB_REPO = "eShoppingTestAutomation";
 const WORKFLOW_FILE = "run-selenium.yml";
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 
+if (!GITHUB_TOKEN) {
+  console.error("❌ GITHUB_TOKEN is missing. Add it as an environment variable.");
+  process.exit(1); // stop server if token not set
+}
+
 app.post("/trigger", async (req, res) => {
     const { browser, profile } = req.body;
     const apiUrl = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/actions/workflows/${WORKFLOW_FILE}/dispatches`;
