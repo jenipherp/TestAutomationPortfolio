@@ -7,12 +7,17 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 const PORT = process.env.PORT || 10000;
 app.use(express.static(path.join(__dirname, "public")));
+// Serve reports folder
+app.use("/reports", express.static(path.join(__dirname, "reports")));
 app.use(express.urlencoded({ extended: true }));
 
 const GITHUB_USER = "meerkatjon";
 const GITHUB_REPO = "eShoppingTestAutomation";
 const WORKFLOW_FILE = "run-selenium.yml";
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+
+// Serve reports folder
+app.use('/reports', express.static(path.join(__dirname, 'reports')));
 
 if (!GITHUB_TOKEN) {
   console.error("❌ GITHUB_TOKEN is missing. Add it as an environment variable.");
