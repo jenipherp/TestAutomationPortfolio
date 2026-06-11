@@ -24,6 +24,7 @@ if (!GITHUB_TOKEN) {
   process.exit(1); // stop server if token not set
 }
 
+
 app.post("/trigger", async (req, res) => {
     const { browser, profile } = req.body;
     const apiUrl = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/actions/workflows/${WORKFLOW_FILE}/dispatches`;
